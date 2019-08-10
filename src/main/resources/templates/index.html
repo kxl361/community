@@ -20,19 +20,18 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:if="${session.user == null}">
                 <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=2fdbb026c9a42894654b&redirect_uri=http://localhost:8080/callback&scope=user&state=com">登录</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" th:if="${session.user != null}">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                   aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">退出登录</a>
                 </div>
             </li>
             <li class="nav-item">
